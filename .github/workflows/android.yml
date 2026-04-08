@@ -14,10 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         cache: gradle
 
@@ -31,14 +31,14 @@ jobs:
     # 如果你的项目编译目标不同，请修改下面的 API_LEVEL 变量
     - name: Replace android.jar with AOSP version
       env:
-        API_LEVEL: "33" # 请根据你的项目 compileSdkVersion 修改此处
+        API_LEVEL: "36" # 请根据你的项目 compileSdkVersion 修改此处
       run: |
         # 创建平台目录（如果不存在）
         mkdir -p $ANDROID_HOME/platforms/android-${API_LEVEL}
         
         # 下载 aosp-android-jar
         # 这里的 URL 指向最新版本的 jar，你可以根据需要锁定具体版本
-        wget -O aosp-android.jar https://github.com/Reginer/aosp-android-jar/releases/latest/download/aosp-android.jar
+        wget -O aosp-android.jar https://github.com/Reginer/aosp-android-jar/raw/refs/heads/main/android-36/android-jdk21.jar
         
         # 备份原文件（可选）并替换
         mv $ANDROID_HOME/platforms/android-${API_LEVEL}/android.jar $ANDROID_HOME/platforms/android-${API_LEVEL}/android.jar.bak 2>/dev/null || true
