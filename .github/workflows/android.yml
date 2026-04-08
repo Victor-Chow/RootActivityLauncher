@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "master", "l10n_master" ]
+    branches: [ "l10n_master" ]
   pull_request:
-    branches: [ "master", "l10n_master" ]
+    branches: [ "l10n_master" ]
 
 jobs:
   build:
