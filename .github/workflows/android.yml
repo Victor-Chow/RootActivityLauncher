@@ -58,8 +58,11 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: find apk
-      run: ls -la app/build/outputs/apk/
+    - name: find release
+      run: ls -la app/build/outputs/apk/release/
+
+    - name: find debug
+      run: ls -la app/build/outputs/apk/debug/
 
     - name: Upload APK
       uses: actions/upload-artifact@v7.0.0
